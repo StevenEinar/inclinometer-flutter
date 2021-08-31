@@ -1,0 +1,35 @@
+name: axis_inclinometer_monitor
+description: A complimentary mobile app which monitors the telemetry from an Axis Inclinometer and provides real-time visualizations of that data.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_blue: ^0.8.0
+  fl_chart: ^0.40.0
+  location: ^4.2.0
+  app_settings: 4.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.9.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/icon.png"
+  remove_alpha_ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
