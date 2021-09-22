@@ -5,6 +5,9 @@ import 'package:axis_inclinometer_monitor/services/DeviceService.dart';
 import 'package:axis_inclinometer_monitor/objects/PeripheralDevice.dart';
 import 'package:axis_inclinometer_monitor/objects/Device.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'dart:typed_data';
+import 'dart:convert';
+import 'package:byte_util/byte_util.dart';
 
 class DevicesScreen extends StatefulWidget {
 
@@ -170,11 +173,26 @@ class _DevicesScreenState extends State<DevicesScreen> {
           rssi: scanResult.rssi,
           connectable: scanResult.advertisementData.connectable,
           txPowerLevel: scanResult.advertisementData.txPowerLevel,
+
           bluetoothDevice: scanResult.device,
         );
         if(displayAllDevices) {
           if(!peripheralDevices.any((element) => element.id == peripheralDevice.id)) {
             peripheralDevices.add(peripheralDevice);
+            print('Scan result ....... ${scanResult.device.id.toString()}');
+            print(scanResult.advertisementData.manufacturerData);
+            scanResult.advertisementData.manufacturerData.forEach((key, value) {
+              print(key);
+              print(value);
+              //print(Utf8Codec(allowMalformed: true).encode('Witness Equipment'));
+              //print(Uint8List.fromList(value));
+              //print(Uint8List.fromList(Utf8Codec(allowMalformed: true).encode('Witness Equipment')));
+              //print(Utf8Codec(allowMalformed: true).decode(value));
+              //print(Utf8Codec(allowMalformed: true).decode(Uint8List.fromList(value)));
+              print(String.fromCharCodes(value));
+              print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+              //print(ByteData.sublistView(Int8List.fromList(value)).);
+            });
           }
         } else {
           if(
@@ -188,6 +206,26 @@ class _DevicesScreenState extends State<DevicesScreen> {
         
       }
     });
+  }
+
+  void bytesToString(List<int> bytesList) {
+    Utf8Codec uCodec = Utf8Codec();
+    print(uCodec.decode(bytesList));
+    // Uint8List bytes = Uint8List.fromList(bytesList);
+    // StringBuffer buffer = new StringBuffer();
+    // for (int i = 0; i < bytes.length;) {
+    //   int firstWord = (bytes[i] << 8) + bytes[i + 1];
+    //   if (0xD800 <= firstWord && firstWord <= 0xDBFF) {
+    //     int secondWord = (bytes[i + 2] << 8) + bytes[i + 3];
+    //     buffer.writeCharCode(((firstWord - 0xD800) << 10) + (secondWord - 0xDC00) + 0x10000);
+    //     i += 4;
+    //   }
+    //   else {
+    //     buffer.writeCharCode(firstWord);
+    //     i += 2;
+    //   }
+    // }
+    // print(buffer.toString());
   }
 
 }

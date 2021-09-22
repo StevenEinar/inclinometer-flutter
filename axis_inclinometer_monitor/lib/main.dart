@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:axis_inclinometer_monitor/routes/RouteGenerator.dart';
 
-enum errorSeverity {
-  INFO,
-  WARNING,
-  SEVERE,
-}
-
 void main() {
   runApp(AxisInclinometerMonitor());
 }

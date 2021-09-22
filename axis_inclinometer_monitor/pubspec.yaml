@@ -12,10 +12,15 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.7
   flutter_blue: ^0.8.0
   fl_chart: ^0.40.0
   location: ^4.2.0
   app_settings: 4.1.1
+  path_provider: ^2.0.3
+  byte_util: ^3.0.0
+  path: ^1.8.0
+  provider: ^6.0.0
 
 dev_dependencies:
   flutter_test:

@@ -4,7 +4,7 @@ class PeripheralDevice extends Object {
 
   final String id;
   final String localName;
-  final int rssi;
+  int rssi;
   final bool connectable;
   final int? txPowerLevel;
   final BluetoothDevice? bluetoothDevice;
